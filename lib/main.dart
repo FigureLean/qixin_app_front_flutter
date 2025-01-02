@@ -1,77 +1,62 @@
 import 'package:flutter/material.dart';
-import 'pages/homePage.dart';
+import 'package:bruno/bruno.dart';
+
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("首页"),
-          leading: const Icon(Icons.menu),
-          actions: const [
-            Icon(Icons.settings),
-          ],
-          backgroundColor: Colors.lightBlue,
-          elevation: 0.0,
-          centerTitle: true,
-        ),
-        body: const HomePageBody(),
-      )
+      home: LoginPage(),
     );
   }
 }
 
-
-class HomePageBody extends StatelessWidget {
-  const HomePageBody({super.key});
-
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text(
-          "首页内容",
-          style: TextStyle(fontSize: 20, color: Colors.red),
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.ltr,
+    return  Scaffold(
+      backgroundColor: Color(0xFAFAFA),
+      body: Align(
+        alignment: Alignment.center, // 确保Align组件居中对齐其子组件
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 80,bottom: 40),
+              child:  CircleAvatar(
+                radius: 100,
+                backgroundColor: Colors.grey[300],
+                child: Text(
+                  '栖\n心',
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+            Expanded( // 使用Flexible组件来填充剩余空间
+              child: BrnShadowCard(
+
+                color: Colors.white,
+                circular: 20,
+                // borderWidth: 10,
+
+                child: Container(
+                  width: double.infinity, // 设置宽度为100%，即double.infinity
+                  child: const Text(
+                    '阴影卡片，\n这是内容区域',
+                    style: TextStyle(fontSize: 26),
+                    textAlign: TextAlign.center, // 使文本居中
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        RichText(
-            text: const TextSpan(
-              text: "富文本",
-              style: TextStyle(
-                  color: Colors.blue, fontSize: 30, fontWeight: FontWeight.bold),
-            )),
-        Container(
-          width: 300,
-          height: 300,
-          color: Colors.red,
-          alignment: Alignment.bottomCenter,
-          margin: const EdgeInsets.all(20),
-          child: const Text(
-            "我是一个容器",
-            style: TextStyle(color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => HomePage()));
-          },
-          child: const Text("跳转到页面1"),
-        )
-      ],
+      ),
     );
-  }
-}
+  }}

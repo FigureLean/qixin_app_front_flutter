@@ -61,6 +61,7 @@ class Request {
       // print("响应结果: $response");
     } else {
       // 处理异常结果
+      // ignore: avoid_print
       print("响应异常: $response");
     }
     handler.next(response);
@@ -104,6 +105,7 @@ class Request {
           onReceiveProgress: onReceiveProgress);
       return response.data;
     } on DioException catch (e) {
+      // ignore: avoid_print
       print("发送请求异常: $e");
       rethrow;
     }
