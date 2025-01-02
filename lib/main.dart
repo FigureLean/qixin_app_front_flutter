@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Color(0xFAFAFA),
       body: Align(
         alignment: Alignment.center, // 确保Align组件居中对齐其子组件
@@ -28,8 +28,8 @@ class LoginPage extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 80,bottom: 40),
-              child:  CircleAvatar(
+              padding: EdgeInsets.only(top: 80, bottom: 40),
+              child: CircleAvatar(
                 radius: 100,
                 backgroundColor: Colors.grey[300],
                 child: Text(
@@ -38,9 +38,9 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded( // 使用Flexible组件来填充剩余空间
+            Expanded(
+              // 使用Flexible组件来填充剩余空间
               child: BrnShadowCard(
-
                 color: Colors.white,
                 circular: 20,
                 // borderWidth: 10,
@@ -59,4 +59,5 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
-  }}
+  }
+}
